@@ -114,8 +114,15 @@ alias btop="bashtop"
 alias home="cd $HOME"
 alias sdn="shutdown now"
 alias man="tldr"
+alias ex="exit"
+alias cls="clear"
 alias fzf-ui="fzf --preview 'bat --color=always {}' | xargs -r nvim"
 alias gpaste="gpaste-client ui"
+alias lzg="lazygit"
+alias pn="pnpm"
+alias dlx="pnpm dlx"
+alias connect="warp-cli connect"
+alias disconnect="warp-cli disconnect"
 eval "$(thefuck --alias fk)"
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
@@ -142,7 +149,7 @@ _fzf_comprun() {
 }
 # ---- Eza (better ls) -----
 
-alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions --all"
+alias ls="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions --all"
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
@@ -180,3 +187,11 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$HOME/.flutter/flutter/bin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source <(fzf --zsh)
+
+# pnpm
+export PNPM_HOME="/home/khauvannam/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
