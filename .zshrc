@@ -4,7 +4,14 @@ export ZSH="$HOME/.oh-my-zsh"
 # Set the default editor
 export EDITOR="nvim"
 
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
+
 # History settings
+
+export SHELL='/usr/bin/zsh'
 
 # Install Zinit if not installed
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -37,11 +44,10 @@ zdharma-continuum/fast-syntax-highlighting \
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 # Aliases
-alias lzd='lazydocker'
 alias ext='extract'
 alias cd='z'
-alias data1='cd /mnt/data1'
-alias data2='cd /mnt/data2'
+alias projects='cd /mnt/projects'
+alias externals='cd /mnt/externals'
 alias home="cd $HOME"
 alias sdn="shutdown now"
 alias man="tldr"
@@ -49,10 +55,6 @@ alias q="exit"
 alias cls="clear"
 alias fzf-ui="fzf --preview 'bat --color=always {}' | xargs -r nvim"
 alias lzg="lazygit"
-alias pn="pnpm"
-alias dlx="pnpm dlx"
-alias connect="warp-cli connect"
-alias disconnect="warp-cli disconnect"
 alias ff="fastfetch"
 
 # Enable command auto-correction
@@ -104,46 +106,11 @@ _fzf_compgen_dir() {
 # Aliases and functions for file management
 alias ls="eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions --all"
 
-function yy() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-  yazi "$@" --cwd-file="$tmp"
-  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-    cd -- "$cwd"
-  fi
-  rm -f -- "$tmp"
-}
-
-# bun completions
-[ -s "/home/khauvannam/.bun/_bun" ] && source "/home/khauvannam/.bun/_bun"
-
 # FZF theme
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
 --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
 --color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# flutter
-export PATH="$HOME/.flutter/flutter/bin:$PATH"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source <(fzf --zsh)
-
-# pnpm
-export PNPM_HOME="/home/khauvannam/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
-# fnm
-FNM_PATH="/home/khauvannam/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/khauvannam/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
 
 # Export paths
 export PATH=$HOME/.local/bin:$PATH
@@ -158,3 +125,13 @@ setopt EXTENDED_HISTORY
 # History need space to work
 setopt auto_cd
 
+# navicat run
+alias nv="./navicat/navicat17.AppImage"
+
+# distrobox
+alias d-php="distrobox enter php-env"
+
+# docker export
+DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
