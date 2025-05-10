@@ -57,7 +57,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 echo "🍺 Installing Homebrew packages..."
 
 brew install zsh-autosuggestions
-brew install git
+brew install git gh
+brew install neovim
 brew install fzf
 brew install bat
 brew install eza
