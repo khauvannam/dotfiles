@@ -1,0 +1,35 @@
+
+#
+# /etc/fstab
+# Created by anaconda on Tue Apr 29 21:57:39 2025
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+UUID=b47c2bd0-692b-412e-8175-204744df2343 /                       btrfs   subvol=root,compress=zstd:1 0 0
+UUID=820f2bcb-282d-4252-8df6-0b35e741032f /boot                   ext4    defaults        1 2
+UUID=78DD-3F58          /boot/efi               vfat    umask=0077,shortname=winnt 0 2
+UUID=b47c2bd0-692b-412e-8175-204744df2343 /home                   btrfs   subvol=home,compress=zstd:1 0 0
+UUID=b47c2bd0-692b-412e-8175-204744df2343 /var                    btrfs   subvol=var,compress=zstd:1 0 0
+UUID=3aa86411-d087-433e-99bf-66d623a88b09 /mnt/projects btrfs defaults,noatime,x-systemd.automount 0 2
+UUID=be9c5b03-a928-4fd5-a8ed-8724e97a6518 /mnt/externals btrfs defaults,noatime,x-systemd.automount 0 2
+#
+# /etc/fstab
+# Created by anaconda on Tue Apr 29 21:57:39 2025
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+UUID=b47c2bd0-692b-412e-8175-204744df2343 /                       btrfs   subvol=root,compress=zstd:1 0 0
+UUID=820f2bcb-282d-4252-8df6-0b35e741032f /boot                   ext4    defaults        1 2
+UUID=78DD-3F58          /boot/efi               vfat    umask=0077,shortname=winnt 0 2
+UUID=b47c2bd0-692b-412e-8175-204744df2343 /home                   btrfs   subvol=home,compress=zstd:1 0 0
+UUID=b47c2bd0-692b-412e-8175-204744df2343 /var                    btrfs   subvol=var,compress=zstd:1 0 0
+UUID=3aa86411-d087-433e-99bf-66d623a88b09 /mnt/projects btrfs defaults,noatime,x-systemd.automount 0 2
+UUID=be9c5b03-a928-4fd5-a8ed-8724e97a6518 /mnt/externals btrfs defaults,noatime,x-systemd.automount 0 2
