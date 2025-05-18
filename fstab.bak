@@ -34,5 +34,5 @@ UUID=b47c2bd0-692b-412e-8175-204744df2343 /var                    btrfs   subvol
 UUID=3aa86411-d087-433e-99bf-66d623a88b09 /mnt/projects btrfs defaults,noatime,x-systemd.automount 0 2
 UUID=be9c5b03-a928-4fd5-a8ed-8724e97a6518 /mnt/externals btrfs defaults,noatime,x-systemd.automount 0 2
 
-# UUID=3aa86411-d087-433e-99bf-66d623a88b09 /mnt/projects btrfs noauto,defaults,noatime,compress=zstd:1,ssd,nofail,x-systemd.automount,x-systemd.device-timeout=10 0 0
-# UUID=be9c5b03-a928-4fd5-a8ed-8724e97a6518 /mnt/externals btrfs noauto,defaults,noatime,compress=zstd:1,ssd,nofail,x-systemd.automount,x-systemd.device-timeout=10 0 0
+# UUID=3aa86411-d087-433e-99bf-66d623a88b09 /mnt/projects btrfs noauto,defaults,noatime,compress=zstd:1,ssd,nofail,x-systemd.automount,x-systemd.device-timeout=10 0 2
+# UUID=be9c5b03-a928-4fd5-a8ed-8724e97a6518 /mnt/externals btrfs noauto,defaults,noatime,compress=zstd:1,ssd,nofail,x-systemd.automount,x-systemd.device-timeout=10 0 2
