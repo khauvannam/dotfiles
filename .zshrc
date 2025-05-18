@@ -9,10 +9,6 @@ if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
 fi
 export PATH
 
-# History settings
-
-export SHELL='/usr/bin/zsh'
-
 # Install Zinit if not installed
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -35,7 +31,6 @@ zinit wait lucid light-mode for \
 zsh-users/zsh-completions \
 zdharma-continuum/fast-syntax-highlighting \
   OMZP::git \
-  OMZP::thefuck \
   OMZP::dnf \
   OMZP::extract \
   OMZP::universalarchive \
@@ -43,9 +38,15 @@ zdharma-continuum/fast-syntax-highlighting \
 # Custom fpath for completions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
+# Linux Brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
 # Aliases
 alias ext='extract'
-alias cd='z'
 alias projects='cd /mnt/projects'
 alias externals='cd /mnt/externals'
 alias home="cd $HOME"
@@ -60,6 +61,11 @@ alias ff="fastfetch"
 # Enable command auto-correction
 ENABLE_CORRECTION="true"
 
+# eval
+eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
+alias cd='z'
+
 # Zoxide 
 zinit light ajeetdsouza/zoxide
 
@@ -69,10 +75,6 @@ zinit light starship/starship
 
 #zsh-autosuggestions
 zinit light zsh-users/zsh-autosuggestions 
-
-eval "$(thefuck --alias fk)"
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
 
 # FZF Configuration
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
@@ -121,17 +123,19 @@ SAVEHIST=1000
 HISTSIZE=999
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt EXTENDED_HISTORY
+ENABLE_CORRECTION="true"
 
 # History need space to work
 setopt auto_cd
 
 # navicat run
-alias nv="./navicat/navicat17.AppImage"
+# alias nv="./navicat/navicat17.AppImage"
 
 # distrobox
-alias d-php="distrobox enter php-env"
+# alias d-php="distrobox enter php-env"
 
 # docker export
-DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.sock
+# DOCKER_HOST=unix://$XDG_RUNTIME_DIR/podman/podman.soc
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# fix distrobox ghostty
+export TERM=xterm-256color
